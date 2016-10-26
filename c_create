@@ -1,0 +1,16 @@
+#!/bin/bash
+
+fileName=$1
+filePath='/Users/apple/Documents/coding/c/c_generated/'
+folderToCreate="$filePath$fileName"
+fileToCreate="$filePath$fileName/$fileName.c"
+helloWorld="#include<stdio.h>\n\nint main(){\n\tprintf(\"Hello world\");\n}\n"
+
+if [ ! -d "$folderToCreate" ]; then
+  echo "creating file at : $folderToCreate"
+  mkdir $folderToCreate && touch "$fileToCreate"
+  echo -e $helloWorld >> $fileToCreate
+fi
+echo "opening file : $fileName"
+cd $folderToCreate
+vim $fileToCreate
